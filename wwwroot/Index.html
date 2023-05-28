@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="uk-UA">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders - MyTimeTable</title>
+    <link rel="stylesheet" href="css/site.css" />
+
+</head>
+<body>
+    <h1>Orders</h1>
+
+    <p id="errorDB"></p>
+    <h3>Додати</h3>
+    <!-- форми для додавання лектора -->
+    <form action="javascript:void(0);" method="POST" onsubmit="addOrder()">
+        <!-- onsubmit="функціяДодавання()" -->
+        <!-- Головне в цих інпутах це type для перевірки введення,
+        вказати id відповідно до вашого класу для зручного використання в джс,
+        placeholder показує початкову вказівку, що треба вводити в комірку
+    -->
+        <input type="text" id="add-Name" placeholder="Назва">
+        
+        <input type="number" id="add-StatusOfOrderId" placeholder="StatusOfOrderId">
+      
+        <input type="submit" value="Додати">
+    </form>
+
+    <!-- форма для редагування -->
+    <div id="editOrder" style="display: none">
+        <!-- display: none; приховує комірки при завантаженні -->
+        <h3>Редагувати</h3>
+        <form action="javascript:void(0);" onsubmit="updateOrder()">
+            <input type="hidden" id="edit-Id"> <!-- type=hidden бо користувач не може міняти id -->
+            <input type="text" id="add-Name" placeholder="Назва">
+        
+            <input type="number" id="add-StatusOfOrderId" placeholder="StatusOfOrderId">
+            
+            <input type="submit" value="Зберегти">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a> <!-- кнопка для приховування редагування-->
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <!-- Наша таблиця -->
+        <tr>
+            <th>ID</th>
+            <th>Назва</th>
+            
+            <th>StatusOfOrderId</th>
+          
+            <th></th> <!-- два стовпця для кнопок редагування та видалення-->
+            <th></th>
+        </tr>
+        <tbody id="orders"></tbody>
+    </table>
+
+    <script src="js/lab2.js" asp-append-version="true"></script> <!-- наш джс скрипт -->
+    <script type="text/javascript">
+    getProducts(); // викликає для відображення лекторів
+    </script>
+
+</body>
+</html>
